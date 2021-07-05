@@ -1,0 +1,116 @@
+<project default="all">
+	<property file="build.properties" />
+	<!-- classes in ant-lib: 
+	about.jar     jce.jar   junit-4.7-SNAPSHOT-20090511-2347.jar  management-agent.jar  rhino.jar
+    charsets.jar  jsse.jar  log4j.xml                             resources.jar         rt.jar
+	-->
+
+	<property name="lib.dir" value="../SyncYourSecrets-SWT/contrib/" />
+	<property name="src.tests" value="test/src" />
+	<property name="ant-lib" value="../ant-libs" />
+	<property name="classes.compile" value="${buildDirectory}/classes" />
+	<property name="reports.tests" value="${buildDirectory}/reports/xml" />
+	<property name="reports.html" value="${buildDirectory}/reports/html" />
+	<property name="test.resources" value="${buildDirectory}/test/resources" />
+
+	<path id="classpath.ant">
+		<fileset dir="${ant-lib}" includes="**/*.*" />
+		<!-- test commit -->
+	</path>
+
+	<path id="classpath.xmlbase">
+		<fileset file="../SyncYourSecrets-SWT/lib/syncyoursecrets-xmlbase.jar" />
+	</path>
+
+
+
+	<path id="classpath.base">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+		<path refid="classpath.ant" />
+		<path refid="classpath.xmlbase" />
+	</path>
+
+	<path id="classpath.test.compile">
+		<path refid="classpath.base" />
+		<pathelement location="../target/syncyoursecrets-xmlbase/test-classes" />
+		<pathelement location="../SyncYourSecrets-SWT/lib/syncyoursecrets-pwmodel.jar" />
+
+	</path>
+
+	<path id="classpath.test.run">
+		<path refid="classpath.test.compile" />
+		<pathelement location="${buildDirectory}/test-classes" />
+	</path>
+
+	<path id="testbaseclasspath">
+
+		<fileset dir="../SyncYourSecrets-SWT/" includes="**/*.jar" />
+	</path>
+
+	<target name="all" depends="clean,jar,runtest,test-reports">
+	</target>
+
+	<target name="clean">
+		<delete dir="${buildDirectory}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<mkdir dir="${buildDirectory}/classes" />
+		<javac srcdir="src" destdir="${classes.compile}" source="1.6" target="1.6" classpathref="classpath.base" debug="true" debuglevel="lines,vars,source" />
+
+
+	</target>
+
+	<target name="testcompile" depends="jar">
+		<mkdir dir="${buildDirectory}/test-classes" />
+		<javac srcdir="test/src" destdir="${buildDirectory}/test-classes" source="1.6" target="1.6" classpathref="classpath.test.compile" debug="true" debuglevel="lines,vars,source" />
+		<copy todir="${buildDirectory}/test-classes">
+			<fileset dir="test/src" excludes="**/*.java" />
+		</copy>
+		<copy todir="${test.resources}">
+			<fileset dir="test/resources" />
+		</copy>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="../SyncYourSecrets-SWT/lib/syncyoursecrets-pwmodel.jar" basedir="${classes.compile}">
+		</jar>
+	</target>
+
+	<target name="init">
+		<mkdir dir="${buildDirectory}" />
+		<mkdir dir="${classes.compile}" />
+		<mkdir dir="${buildDirectory}/reports" />
+		<mkdir dir="${reports.tests}" />
+		<mkdir dir="${reports.html}" />
+	</target>
+
+	<target name="runtest" depends="testcompile">
+		<junit printsummary="yes" haltonfailure="false" dir="../SyncYourSecrets-pwmodel" fork="false">
+			<formatter type="xml" />
+			<sysproperty key="test.resources" value="${test.resources}" />
+			<classpath refid="classpath.test.run" />
+
+			<batchtest todir="${reports.tests}">
+				<fileset dir="${src.tests}">
+					<include name="**/*Test.java" />
+					<exclude name="**/*AllTests.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+
+	</target>
+
+	<target name="test-reports" depends="runtest">
+		<junitreport>
+			<fileset dir="${reports.tests}">
+				<include name="*.xml" />
+			</fileset>
+
+			<report format="frames" todir="${reports.html}" />
+		</junitreport>
+
+	</target>
+
+
+</project>

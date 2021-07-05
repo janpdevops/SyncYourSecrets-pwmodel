@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pwlist created="2009-05-16T23:00:32.564+02:00" id="4364995307124132864"
+	lastAction="UPDATE" lastModified="2009-05-16T23:02:13.726+02:00"
+	version="2">
+	<name created="2009-05-16T23:00:32.564+02:00" id="1093562260754625536"
+		lastAction="CREATE" lastModified="2009-05-16T23:00:32.564+02:00" />
+	<pwentry created="2009-05-16T23:01:55.929+02:00" id="7999099149007219712"
+		lastAction="UPDATE" lastModified="2009-05-16T23:02:13.726+02:00">
+		<name created="2009-05-16T23:01:55.930+02:00" id="1602451063229464576"
+			lastAction="UPDATE" lastModified="2009-05-16T23:01:55.933+02:00">New Entry</name>
+		<email created="2009-05-16T23:01:55.933+02:00" id="848783783214909440"
+			lastAction="CREATE" lastModified="2009-05-16T23:01:55.933+02:00" />
+		<remark created="2009-05-16T23:01:55.932+02:00" id="8371541044116411392"
+			lastAction="UPDATE" lastModified="2009-05-16T23:02:13.726+02:00">Added this entry, other one still without a name</remark>
+		<password created="2009-05-16T23:01:55.932+02:00" id="5787927818393753600"
+			lastAction="CREATE" lastModified="2009-05-16T23:01:55.932+02:00" />
+		<user created="2009-05-16T23:01:55.931+02:00" id="8473327451380130816"
+			lastAction="CREATE" lastModified="2009-05-16T23:01:55.931+02:00" />
+		<url created="2009-05-16T23:01:55.931+02:00" id="4723866882477076480"
+			lastAction="CREATE" lastModified="2009-05-16T23:01:55.931+02:00" />
+	</pwentry>
+	<pwentry created="2009-05-16T23:00:34.820+02:00" id="8584938351695561728"
+		lastAction="UPDATE" lastModified="2009-05-16T23:00:41.430+02:00">
+		<name created="2009-05-16T23:00:34.821+02:00" id="8630656934616660992"
+			lastAction="UPDATE" lastModified="2009-05-16T23:00:36.899+02:00" />
+		<email created="2009-05-16T23:00:34.836+02:00" id="5741103531240032256"
+			lastAction="CREATE" lastModified="2009-05-16T23:00:34.836+02:00" />
+		<remark created="2009-05-16T23:00:34.834+02:00" id="7747063428481035264"
+			lastAction="UPDATE" lastModified="2009-05-16T23:00:41.430+02:00">Empty name</remark>
+		<password created="2009-05-16T23:00:34.830+02:00" id="7260584363794295808"
+			lastAction="CREATE" lastModified="2009-05-16T23:00:34.830+02:00" />
+		<user created="2009-05-16T23:00:34.829+02:00" id="9150288533262828544"
+			lastAction="CREATE" lastModified="2009-05-16T23:00:34.829+02:00" />
+		<url created="2009-05-16T23:00:34.827+02:00" id="7327240317397123072"
+			lastAction="CREATE" lastModified="2009-05-16T23:00:34.827+02:00" />
+	</pwentry>
+</pwlist>
